@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEASTVERSE | MrBeast Fan Universe</title>
+<meta name="description" content="MrBeast olamiga xush kelibsiz! Eng mashhur challenge videolari va katta sovrinlar.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --blue: #087cff;
+  --cyan: #00d5ff;
+  --bg: #06080d;
+  --card: #10141d;
+  --muted: #919bad;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg);
+  color:#fff;
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(ellipse at 80% 5%,#073e7950,transparent 38%),
+    radial-gradient(ellipse at 5% 40%,#0734a020,transparent 40%);
+}
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+button { cursor:pointer; }
+header {
+  height:76px;
+  padding:0 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#07090ddd;
+  border-bottom:1px solid #ffffff12;
+  backdrop-filter:blur(18px);
+}
+.logo { font-size:25px; font-weight:900; letter-spacing:-1.5px; }
+.logo span { color:var(--blue); }
+.nav { display:flex; align-items:center; gap:30px; color:#b8c0d0; font-size:13px; }
+.nav a:hover { color:white; }
+.header-btn,.primary-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  border:0; border-radius:8px; padding:13px 20px;
+  background:var(--blue); color:white; font-weight:800;
+  transition:.25s;
+}
+.header-btn:hover,.primary-btn:hover { transform:translateY(-3px); box-shadow:0 8px 30px #087cff66; }
+.menu-btn { display:none; background:none; border:0; color:white; font-size:27px; }
+.hero {
+  min-height:650px;
+  padding:95px 7% 80px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:45px;
+  position:relative;
+}
+.eyebrow {
+  display:inline-flex; align-items:center; gap:9px;
+  color:#6acaff; font-size:11px; letter-spacing:2px;
+  font-weight:800; text-transform:uppercase;
+  border:1px solid #168bff55; background:#087cff12;
+  padding:9px 13px; border-radius:30px;
+}
+.dot { width:7px; height:7px; background:#00d5ff; border-radius:50%; box-shadow:0 0 12px #00d5ff; }
+.hero h1 {
+  font-size:clamp(48px,7vw,88px);
+  line-height:.98; letter-spacing:-5px;
+  font-weight:900; margin:27px 0 22px;
+}
+.hero h1 span {
+  color:transparent;
+  background:linear-gradient(100deg,#1686ff,#00e0ff);
+  background-clip:text;
+}
+.hero p { max-width:490px; color:var(--muted); line-height:1.8; font-size:15px; }
+.hero-actions { display:flex; flex-wrap:wrap; gap:13px; margin-top:30px; }
+.secondary-btn {
+  padding:13px 20px; border:1px solid #ffffff25;
+  border-radius:8px; background:#ffffff08; color:white; font-weight:700;
+}
+.secondary-btn:hover { background:#ffffff15; }
+.hero-note { margin-top:24px; color:#7f899b; font-size:11px; }
+.hero-visual { position:relative; min-width:0; }
+.hero-image {
+  position:relative; overflow:hidden; border-radius:20px;
+  border:1px solid #ffffff22; background:#101722;
+  transform:rotate(1deg); box-shadow:0 30px 100px #006aff25;
+}
+.hero-image img { display:block; width:100%; aspect-ratio:1.22; object-fit:cover; transition:transform .7s; }
+.hero-image:hover img { transform:scale(1.06); }
+.image-shade { position:absolute; inset:0; background:linear-gradient(0deg,#03060bea,transparent 65%); pointer-events:none; }
+.image-label { position:absolute; left:23px; bottom:22px; right:20px; }
+.image-label small { color:#5ecaff; letter-spacing:2px; font-weight:800; }
+.image-label h3 { font-size:25px; margin-top:8px; }
+.floating-tag {
+  position:absolute; z-index:2; padding:13px 17px;
+  border:1px solid #ffffff22; border-radius:12px;
+  background:#101722ed; box-shadow:0 15px 50px #0008;
+  animation:float 4s ease-in-out infinite;
+}
+.floating-tag strong { display:block; color:#59bdff; font-size:19px; }
+.floating-tag small { color:#a6b1c2; font-size:10px; }
+.tag-top { top:25px; right:-18px; }
+.tag-bottom { bottom:45px; left:-24px; animation-delay:-2s; }
+@keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+
+.ticker { overflow:hidden; border-block:1px solid #ffffff13; background:#ffffff04; }
+.ticker-track {
+  display:flex; width:max-content; gap:35px; padding:19px 0;
+  animation:marquee 28s linear infinite;
+  color:#a7b0c0; font-size:11px; font-weight:800; letter-spacing:2px;
+}
+.ticker-track span::before { content:"✦"; color:var(--blue); margin-right:35px; }
+@keyframes marquee { to { transform:translateX(-50%); } }
+
+section { padding:90px 7%; }
+.section-top { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:30px; }
+.kicker { color:#2999ff; font-size:11px; font-weight:800; letter-spacing:2px; }
+.section-top h2 { font-size:clamp(30px,4vw,45px); letter-spacing:-2px; margin-top:10px; }
+.section-top p { color:var(--muted); font-size:13px; line-height:1.7; max-width:330px; }
+.filters { display:flex; gap:9px; flex-wrap:wrap; margin-bottom:24px; }
+.filter {
+  color:#a9b4c6; border:1px solid #ffffff18; border-radius:7px;
+  padding:10px 15px; background:#ffffff05; font-size:12px; font-weight:700;
+}
+.filter.active,.filter:hover { color:white; background:var(--blue); border-color:var(--blue); }
+.search { width:100%; max-width:310px; background:#10141d; border:1px solid #ffffff1c; border-radius:8px; padding:12px 14px; color:white; outline:none; }
+.search:focus { border-color:var(--blue); }
+.video-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+.video-card {
+  background:var(--card); border:1px solid #ffffff12;
+  border-radius:13px; overflow:hidden; cursor:pointer;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.video-card:hover { transform:translateY(-7px); border-color:#168bff88; box-shadow:0 18px 45px #0005; }
+.thumb { position:relative; overflow:hidden; background:#151b28; }
+.thumb img { width:100%; display:block; aspect-ratio:16/9; object-fit:cover; transition:transform .5s; }
+.video-card:hover .thumb img { transform:scale(1.055); }
+.play {
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:52px; height:52px; display:grid; place-items:center;
+  background:#087cffed; border-radius:50%; font-size:19px;
+  box-shadow:0 0 35px #087cff80;
+}
+.duration {
+  position:absolute; right:10px; bottom:10px;
+  background:#000c; padding:5px 7px; border-radius:4px; font-size:10px;
+}
+.card-content { padding:17px; }
+.card-category { color:#48a9ff; font-size:10px; font-weight:800; letter-spacing:1.5px; }
+.card-content h3 { font-size:16px; line-height:1.5; margin:10px 0; }
+.card-content p { color:var(--muted); font-size:12px; line-height:1.7; }
+.card-bottom { display:flex; align-items:center; justify-content:space-between; margin-top:17px; padding-top:13px; border-top:1px solid #ffffff12; color:#8f9bb0; font-size:11px; }
+.watch { color:#6dbdff; font-weight:800; }
+.no-results { grid-column:1/-1; padding:45px; color:#9da9bc; text-align:center; }
+
+.feature {
+  display:grid; grid-template-columns:1fr 1fr; gap:45px; align-items:center;
+  border:1px solid #ffffff15; border-radius:20px;
+  padding:30px; background:linear-gradient(120deg,#101827,#080b12);
+}
+.feature img { width:100%; display:block; border-radius:12px; }
+.feature h2 { font-size:clamp(30px,4vw,48px); letter-spacing:-2px; margin:15px 0; }
+.feature p { color:var(--muted); font-size:14px; line-height:1.9; margin-bottom:24px; }
+.feature-label { color:#42aaff; font-size:11px; font-weight:800; letter-spacing:2px; }
+.about-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; margin-top:30px; }
+.about-card { padding:25px; background:#10141d; border:1px solid #ffffff12; border-radius:12px; }
+.about-card .icon { font-size:27px; }
+.about-card h3 { margin:15px 0 8px; font-size:16px; }
+.about-card p { color:var(--muted); font-size:12px; line-height:1.8; }
+.cta {
+  margin:0 7% 85px; padding:55px 25px; text-align:center;
+  border:1px solid #168bff45; border-radius:18px;
+  background:radial-gradient(ellipse at center,#073a7560,transparent 70%),#0b101b;
+}
+.cta h2 { font-size:clamp(30px,5vw,49px); letter-spacing:-2px; }
+.cta p { color:var(--muted); font-size:13px; line-height:1.8; margin:15px auto 24px; max-width:500px; }
+footer { padding:27px 7%; border-top:1px solid #ffffff12; display:flex; justify-content:space-between; gap:15px; color:#758094; font-size:11px; }
+footer strong { color:white; }
+footer a { color:#5cb5ff; }
+
+.modal {
+  display:none; position:fixed; inset:0; z-index:100;
+  background:#000e; backdrop-filter:blur(12px);
+  align-items:center; justify-content:center; padding:20px;
+}
+.modal.show { display:flex; }
+.modal-box { width:min(950px,100%); position:relative; }
+.modal-close {
+  display:block; margin:0 0 12px auto; background:#1b2432;
+  color:white; border:1px solid #ffffff25; border-radius:8px;
+  padding:10px 15px; font-size:14px;
+}
+.modal iframe { width:100%; aspect-ratio:16/9; border:0; border-radius:12px; background:#111; }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .7s,transform .7s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:900px) {
+  .hero { grid-template-columns:1fr; padding-top:65px; gap:45px; }
+  .hero-visual { max-width:650px; width:100%; margin:auto; }
+  .video-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .feature { grid-template-columns:1fr; }
+  .nav { gap:16px; }
+}
+@media(max-width:600px) {
+  header { height:65px; padding:0 5%; }
+  .logo { font-size:22px; }
+  .menu-btn { display:block; }
+  .header-btn { padding:10px 12px; font-size:11px; }
+  .nav {
+    display:none; position:absolute; top:65px; left:0; right:0;
+    padding:20px; background:#080b12; border-bottom:1px solid #ffffff15;
+    flex-direction:column; align-items:flex-start;
+  }
+  .nav.open { display:flex; }
+  .hero { padding:65px 5% 60px; }
+  .hero h1 { letter-spacing:-3px; }
+  .tag-top { right:-5px; }
+  .tag-bottom { left:-5px; }
+  section { padding:65px 5%; }
+  .section-top { align-items:flex-start; flex-direction:column; }
+  .search { max-width:none; }
+  .video-grid { grid-template-columns:1fr; gap:17px; }
+  .about-grid { grid-template-columns:1fr; }
+  .feature { padding:18px; gap:24px; }
+  .cta { margin:0 5% 60px; padding:40px 18px; }
+  footer { padding:25px 5%; flex-direction:column; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#home">BEAST<span>VERSE</span></a>
+  <nav class="nav" id="nav">
+    <a href="#home">Bosh sahifa</a>
+    <a href="#videos">Videolar</a>
+    <a href="#featured">Top challenge</a>
+    <a href="#about">Loyiha haqida</a>
+  </nav>
+  <div style="display:flex;gap:12px;align-items:center">
+    <a class="header-btn" href="https://www.youtube.com/@MrBeast" target="_blank" rel="noopener">▶ YouTube</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menyuni ochish">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="eyebrow"><span class="dot"></span> MRBEAST FAN UNIVERSE</div>
+    <h1>THINK<br>BIG.<br><span>GO BEAST.</span></h1>
+    <p>Eng katta challenge'lar, aql bovar qilmas sovrinlar va internetdagi eng shov-shuvli videolar olamiga xush kelibsan.</p>
+    <div class="hero-actions">
+      <a class="primary-btn" href="#videos">▶ Videolarni ko‘rish</a>
+      <a class="secondary-btn" href="#about">Loyiha haqida ↗</a>
+    </div>
+    <div class="hero-note">INDEPENDENT FAN PROJECT · MRBEAST BILAN RASMIY BOG‘LIQ EMAS</div>
+  </div>
+  <div class="hero-visual">
+    <div class="floating-tag tag-top"><strong>100% BEAST</strong><small>CHALLENGE MODE</small></div>
+    <div class="hero-image">
+      <img src="https://img.youtube.com/vi/tQ4m4zD7BBA/maxresdefault.jpg" alt="MrBeast challenge videosi" onerror="this.src='https://img.youtube.com/vi/tQ4m4zD7BBA/hqdefault.jpg'">
+      <div class="image-shade"></div>
+      <div class="image-label"><small>THE ULTIMATE CHALLENGE</small><h3>Last To Fall Wins $1,000,000</h3></div>
+    </div>
+    <div class="floating-tag tag-bottom"><strong>⚡ LEVEL UP</strong><small>WELCOME TO BEASTVERSE</small></div>
+  </div>
+</section>
+
+<div class="ticker"><div class="ticker-track">
+  <span>BIG CHALLENGES</span><span>INSANE VIDEOS</span><span>MRBEAST UNIVERSE</span><span>BIG DREAMS</span><span>BEAST MODE</span>
+  <span>BIG CHALLENGES</span><span>INSANE VIDEOS</span><span>MRBEAST UNIVERSE</span><span>BIG DREAMS</span><span>BEAST MODE</span>
+</div></div>
+
+<section id="videos">
+  <div class="section-top reveal">
+    <div><div class="kicker">THE VIDEO COLLECTION</div><h2>BEAST VIDEOLAR<span style="color:#168bff">.</span></h2></div>
+    <p>Tanla, bos va tomosha qil. Senga yoqqan challenge'ni qidiruv orqali top.</p>
+  </div>
+  <div class="filters reveal">
+    <button class="filter active" data-filter="all">Hammasi</button>
+    <button class="filter" data-filter="challenge">Challenge</button>
+    <button class="filter" data-filter="cars">Mashinalar</button>
+    <button class="filter" data-filter="survival">Survival</button>
+    <input class="search" id="search" type="search" placeholder="🔎 Video qidirish..." aria-label="Video qidirish">
+  </div>
+  <div class="video-grid" id="videoGrid"></div>
+</section>
+
+<section id="featured">
+  <div class="feature reveal">
+    <div>
+      <img src="https://img.youtube.com/vi/KrLj6nc516A/maxresdefault.jpg" alt="MrBeast $1 vs $100,000,000 Car challenge" loading="lazy" onerror="this.src='https://img.youtube.com/vi/KrLj6nc516A/hqdefault.jpg'">
+    </div>
+    <div>
+      <div class="feature-label">✦ FEATURED CHALLENGE</div>
+      <h2>$1 vs<br>$100,000,000</h2>
+      <p>Oddiy mashinadan tortib tasavvurga sig‘maydigan superkarlargacha. MrBeast videolari nega bunchalik mashhurligini o‘zing ko‘r!</p>
+      <button class="primary-btn" id="featuredPlay">▶ Videoni tomosha qilish</button>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-top reveal">
+    <div><div class="kicker">WHY BEASTVERSE?</div><h2>BU — BEAST RUHI.</h2></div>
+  </div>
+  <div class="about-grid">
+    <article class="about-card reveal"><div class="icon">🎬</div><h3>Video olami</h3><p>MrBeast videolariga tezkor kirish va qiziqarli challenge'lar to‘plami.</p></article>
+    <article class="about-card reveal"><div class="icon">⚡</div><h3>Tez va zamonaviy</h3><p>Qorong‘i dizayn, silliq animatsiyalar va kompyuter hamda telefon uchun mos interfeys.</p></article>
+    <article class="about-card reveal"><div class="icon">🌎</div><h3>Fan loyihasi</h3><p>Bu mustaqil muxlislar sayti. MrBeast yoki uning jamoasining rasmiy sayti emas.</p></article>
+  </div>
+</section>
+
+<div class="cta reveal">
+  <h2>READY TO GO <span style="color:#168bff">BEAST?</span></h2>
+  <p>MrBeast’ning rasmiy YouTube kanaliga o‘tib, eng yangi videolarni tomosha qil.</p>
+  <a class="primary-btn" href="https://www.youtube.com/@MrBeast" target="_blank" rel="noopener">Rasmiy kanalga o‘tish ↗</a>
+</div>
+</main>
+
+<footer>
+  <div><strong>BEASTVERSE</strong> — Independent fan-made website.</div>
+  <div>© <span id="year"></span> BEASTVERSE · <a href="https://www.youtube.com/@MrBeast" target="_blank" rel="noopener">MrBeast YouTube ↗</a></div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="YouTube video">
+  <div class="modal-box">
+    <button class="modal-close" id="closeModal">✕ Yopish</button>
+    <iframe id="player" title="YouTube video player" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+const videos = [
+  {
+    id:"tQ4m4zD7BBA",
+    title:"Last To Fall Wins $1,000,000 (Part 1)",
+    category:"challenge",
+    label:"CHALLENGE",
+    description:"Kim oxirigacha chidab tursa, ulkan sovrinni yutadi.",
+    duration:"WATCH NOW"
+  },
+  {
+    id:"KrLj6nc516A",
+    title:"$1 vs $100,000,000 Car!",
+    category:"cars",
+    label:"CARS",
+    description:"Oddiy avtomobil va aql bovar qilmas qimmat mashina.",
+    duration:"WATCH NOW"
+  },
+  {
+    id:"0e3GPea1Tyg",
+    title:"$456,000 Squid Game In Real Life!",
+    category:"survival",
+    label:"SURVIVAL",
+    description:"Squid Game ruhidagi katta real hayot challenge'i.",
+    duration:"WATCH NOW"
+  }
+];
+
+const grid = document.getElementById("videoGrid");
+const search = document.getElementById("search");
+let activeFilter = "all";
+
+function renderVideos() {
+  const query = search.value.trim().toLowerCase();
+  const filtered = videos.filter(v =>
+    (activeFilter === "all" || v.category === activeFilter) &&
+    (v.title.toLowerCase().includes(query) ||
+     v.description.toLowerCase().includes(query))
+  );
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">😕 Video topilmadi. Boshqa so‘z yozib ko‘r.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(v => `
+    <article class="video-card" tabindex="0" role="button"
+      aria-label="${v.title.replace(/"/g,"&quot;")}" data-video="${v.id}">
+      <div class="thumb">
+        <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg"
+          alt="${v.title.replace(/"/g,"&quot;")}" loading="lazy"
+          onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'">
+        <div class="play">▶</div>
+        <span class="duration">${v.duration}</span>
+      </div>
+      <div class="card-content">
+        <div class="card-category">${v.label}</div>
+        <h3>${v.title}</h3>
+        <p>${v.description}</p>
+        <div class="card-bottom"><span>MRBEAST VIDEO</span><span class="watch">Tomosha qilish ↗</span></div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function openVideo(id) {
+  document.getElementById("player").src =
+    "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0";
+  document.getElementById("modal").classList.add("show");
+  document.body.style.overflow = "hidden";
+  document.getElementById("closeModal").focus();
+}
+
+function closeVideo() {
+  document.getElementById("modal").classList.remove("show");
+  document.getElementById("player").src = "";
+  document.body.style.overflow = "";
+}
+
+grid.addEventListener("click", e => {
+  const card = e.target.closest("[data-video]");
+  if (card) openVideo(card.dataset.video);
+});
+
+grid.addEventListener("keydown", e => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-video]")) {
+    e.preventDefault();
+    openVideo(e.target.dataset.video);
+  }
+});
+
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+    activeFilter = button.dataset.filter;
+    renderVideos();
+  });
+});
+
+search.addEventListener("input", renderVideos);
+document.getElementById("featuredPlay").addEventListener("click", () => openVideo("KrLj6nc516A"));
+document.getElementById("closeModal").addEventListener("click", closeVideo);
+document.getElementById("modal").addEventListener("click", e => {
+  if (e.target.id === "modal") closeVideo();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeVideo();
+});
+
+document.getElementById("menuBtn").addEventListener("click", () => {
+  document.getElementById("nav").classList.toggle("open");
+});
+document.querySelectorAll(".nav a").forEach(a => a.addEventListener("click", () => {
+  document.getElementById("nav").classList.remove("open");
+}));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.12});
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderVideos();
+</script>
+</body>
+</html>
